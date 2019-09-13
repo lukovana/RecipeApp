@@ -19,7 +19,6 @@ export default function HomeScreen() {
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.welcomeContainer}>
-          
           <Text>Hello World</Text>
         </View>
 

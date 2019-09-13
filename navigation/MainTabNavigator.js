@@ -3,9 +3,11 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
+
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import BreakfastScreen from '../screens/BreakfastScreen';
+import EggsScreen from '../screens/EggsScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -51,26 +53,62 @@ LinksStack.navigationOptions = {
 
 LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const BreakfastStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Breakfast: EggsScreen,
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+BreakfastStack.navigationOptions = {
+  tabBarLabel: 'Eggs',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+BreakfastStack.path = '';
+////////////////////////////////////////
+const BaconStack = createStackNavigator(
+  {
+    Bacon: BreakfastScreen,
+  },
+  config
+);
+
+BaconStack.navigationOptions = {
+  tabBarLabel: 'Bacon',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+BaconStack.path = '';
+
+///////////////////////////////////////////////
+
+const DonutStack = createStackNavigator(
+  {
+    Donut: HomeScreen,
+  },
+  config
+);
+
+DonutStack.navigationOptions = {
+  tabBarLabel: 'Donuts',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+DonutStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack,
+  BreakfastStack,
+  BaconStack,
+  DonutStack
 });
 
 tabNavigator.path = '';
