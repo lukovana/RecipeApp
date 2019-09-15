@@ -1,20 +1,26 @@
-import React from 'react';
-import { ScrollView,
-         View, 
-         Text, 
-         StyleSheet 
-        } from 'react-native';
+import React, { Component } from 'react';
+import { ScrollView, View, Text, StyleSheet, Button } from 'react-native';
 
-const EggsScreen = () => {
+class EggsScreen extends Component {
+
+    state = {
+        egg: 'scrambled',
+    }
+
+    render() {
     return (
-        <ScrollView style={EggsStyle.bg}>
-            <View style={EggsStyle.view}>
-                <Text style={EggsStyle.text}>Scrambled Eggs</Text>
-                <Text style={EggsStyle.text}>Sunny Up Side Eggs</Text>
+        <ScrollView>
+            <View>
+                <Text>My brain is {this.state.egg}.</Text>
+                <Button 
+                    title="Cook me"
+                    onPress={() => this.setState({ egg: 'fried' })}
+                />
             </View>
         </ScrollView>
     )
-};
+    };
+}
 
 const EggsStyle = StyleSheet.create({
     text: {
