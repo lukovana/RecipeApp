@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Text, StyleSheet, Button } from 'react-native';
+import EggWhites from '../components/EggWhites';
 
 class EggsScreen extends Component {
 
-    state = {
-        egg: 'scrambled',
+    constructor(props) {
+        super(props);
+        this.state = {
+            pan: 'empty',
+        }
+    }
+    
+    changePan = (newPan) => {
+        this.setState({ pan: newPan });
     }
 
     render() {
     return (
         <ScrollView>
-            <View>
-                <Text>My brain is {this.state.egg}.</Text>
-                <Button 
-                    title="Cook me"
-                    onPress={() => this.setState({ egg: 'fried' })}
-                />
-            </View>
+            <EggWhites  usePan={this.state.pan}
+                        alterPan={this.changePan}
+            />
         </ScrollView>
     )
     };
